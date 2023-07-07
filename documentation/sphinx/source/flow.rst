@@ -113,7 +113,7 @@ Some preprocessor definitions will not fix all issues though. When programming F
                     int i = 0;
                     wait(someFuture);
                     int i = 2;
-                    wait(someOtherFuture)
+                    wait(someOtherFuture);
                 }
 
 
@@ -129,7 +129,7 @@ Some preprocessor definitions will not fix all issues though. When programming F
                     }
                     {
                         int i = 2;
-                        wait(someOtherFuture)
+                        wait(someOtherFuture);
                     }
                 }
 
@@ -140,7 +140,7 @@ Some preprocessor definitions will not fix all issues though. When programming F
 
                 ACTOR foo() {
                     state Foo f;
-                    foo([=]() { f.bar(); })
+                    foo([=]() { f.bar(); });
                 }
 
 
@@ -151,7 +151,7 @@ Some preprocessor definitions will not fix all issues though. When programming F
                 ACTOR foo() {
                     state Foo f;
                     auto x = &f;
-                    foo([x]() { x->bar(); })
+                    foo([x]() { x->bar(); });
                 }
 
 - state variables in Flow don't follow the normal scoping rules. So in Flow a state variable can be defined in an inner scope and later it can be used in the outer scope. In order to not break compilation in IDE-mode, always define state variables in the outermost scope they will be used.
